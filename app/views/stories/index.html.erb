@@ -1,0 +1,9 @@
+<h1>Stories</h1>
+
+<% @stories.each do |story| %>
+  <p><%= link_to story.title, story_path(story) %> | <%= link_to "Delete", story_path(story), :data => {:confirm => "You sure?",
+                                   :method => "delete"} %></p>
+
+<% end %>
+
+<%= link_to 'Add a Story', new_story_path %>

@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to users_path
+      redirect_to user_path(@user)
+      session[:current_user_id] = @user.id
     else
       render :new
     end
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
     if user
       user_logged_in = user.authenticate(authentication_params[:password])
       if user_logged_in
-        #set session user
+        session[:current_user_id] = user_logged_in.id
         redirect_to user_path(user_logged_in)
       else
         flash[:notice] = "Incorrect password"

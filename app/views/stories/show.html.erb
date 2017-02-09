@@ -1,0 +1,6 @@
+<h1><%= @story.title %></h1>
+
+<% @story.contributions.each do |contribution| %>
+  <%= img_tag contribution.image %>
+  <p><%= contribution.content %></p>
+<% end %>
