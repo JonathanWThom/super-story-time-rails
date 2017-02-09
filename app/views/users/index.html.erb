@@ -1,0 +1,21 @@
+<h1>Users</h1>
+
+<% @users.each do |user| %>
+  <p><%= link_to user.name, user_path(user) %>
+<% end %>
+
+<hr>
+<br>
+
+<%= flash[:notice] %>
+
+<h3>Log In</h3>
+<%= form_tag(users_log_in_path, method: 'get') do %>
+  <%= label_tag :name %>
+  <%= text_field_tag :name %>
+  <%= label_tag :password %>
+  <%= text_field_tag :password %>
+  <%= submit_tag %>
+<% end %>
+
+<%= link_to "Create a New User", new_user_path %>
