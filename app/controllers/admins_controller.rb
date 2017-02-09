@@ -20,7 +20,9 @@ class AdminsController < ApplicationController
   end
 
   def console
-
+    if !@current_user.admin
+      redirect_to users_path
+    end
   end
 
 private
