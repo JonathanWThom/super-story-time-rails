@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def index
+    @current_user = User.find_by_id(session[:current_user_id])
     @users = User.all
   end
 
@@ -36,6 +37,11 @@ class UsersController < ApplicationController
       flash[:notice] = "No user with that name"
       redirect_to users_path
     end
+  end
+
+  def logout
+    session.clear
+    redirect_to users_path
   end
 
 private

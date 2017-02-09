@@ -1,5 +1,9 @@
 <h1>Users</h1>
 
+<% if @current_user %>
+  <h3>Current User: <%= @current_user.name %></h3>
+<% end %>
+
 <% @users.each do |user| %>
   <p><%= link_to user.name, user_path(user) %>
 <% end %>
@@ -17,5 +21,7 @@
   <%= text_field_tag :password %>
   <%= submit_tag %>
 <% end %>
+
+<h3><%= link_to "Log Out", users_log_out_path, method: 'get' %>
 
 <%= link_to "Create a New User", new_user_path %>
