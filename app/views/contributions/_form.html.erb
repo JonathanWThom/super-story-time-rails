@@ -1,0 +1,8 @@
+<%= render 'layouts/errors', :object => @contribution %>
+
+<%= form_for [@story, @contribution] do |f| %>
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+  <%= f.hidden_field :image, :value => @random_image %>
+  <%= f.submit %>
+<% end %>

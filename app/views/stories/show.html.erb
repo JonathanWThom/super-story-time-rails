@@ -1,6 +1,16 @@
+<p>You are logged in as <%= @current_user.name %></p>
 <h1><%= @story.title %></h1>
 
+
 <% @story.contributions.each do |contribution| %>
-  <%= img_tag contribution.image %>
+  <%= image_tag contribution.image %>
+  <p><%= contribution.user.name %></p>
   <p><%= contribution.content %></p>
 <% end %>
+
+<hr>
+<h2>Create a Contribution</h2>
+<%= image_tag @random_image %>
+
+<%= flash[:notice] %>
+<%= render 'contributions/form' %>

@@ -1,10 +1,12 @@
 class StoriesController < ApplicationController
   def index
     @stories = Story.all
+    @current_user = User.find_by_id(session[:current_user_id])
   end
 
   def new
     @story = Story.new
+    @current_user = User.find_by_id(session[:current_user_id])
   end
 
   def create
@@ -14,10 +16,16 @@ class StoriesController < ApplicationController
     else
       render :new
     end
+    @current_user = User.find_by_id(session[:current_user_id])
   end
 
   def show
     @story = Story.find(params[:id])
+    @current_user = User.find_by_id(session[:current_user_id])
+    @contribution = Contribution.new
+    a = rand(300..600)
+    b = rand(300..600)
+    @random_image ="https://unsplash.it/"+a.to_s+"/"+b.to_s
   end
 
   def destroy
