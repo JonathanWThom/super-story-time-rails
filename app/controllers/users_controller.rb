@@ -22,6 +22,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+    if @current_user
+      if @current_user.admin || @current_user.id == @user.id
+        render :edit
+      else
+        redirect_to users_path
+      end
+    end
+  end
+
   def authenticate
     user = User.find_by(name: authentication_params[:name])
     if user

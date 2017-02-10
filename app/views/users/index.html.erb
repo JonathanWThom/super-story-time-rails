@@ -1,7 +1,7 @@
 <h1>Users</h1>
 
 <% if @current_user %>
-  <h3>Current User: <%= @current_user.name %></h3>
+  <h3>Current User: <%= link_to @current_user.name, user_path(@current_user) %></h3>
 <% end %>
 
 <% if @current_user %>

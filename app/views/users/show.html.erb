@@ -3,3 +3,5 @@
 <% @user.stories.each do |story| %>
   <p><%= story.title %></p>
 <% end %>
+
+<%= link_to "Edit Account", edit_user_path(@user) %>
